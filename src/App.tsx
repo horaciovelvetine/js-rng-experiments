@@ -1,22 +1,16 @@
-import { rollDice, randomInt, countDiceRolls } from './func/math-module';
-import React, { PureComponent, useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { generateSimpleDiceRollSet } from './func/simple-dice-rolls';
+import { useState } from 'react';
 import './App.css';
+import { SimpleDiceCountBarChart } from './components/SimpleDiceCountBarChart';
 
 function App() {
-	const [data, setData] = useState(countDiceRolls(1000, 0, 100));
-	
+	const [data, setData] = useState(generateSimpleDiceRollSet(10000, 0, 100));
+
 	return (
 		<div className='App'>
 			<main className='main-container'>
 				<div>
-					<BarChart data={data} width={900} height={450}>
-						<XAxis dataKey='int' />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Bar dataKey='occurrs' fill='#f8f' />
-					</BarChart>
+					<SimpleDiceCountBarChart dataSet={data} />
 				</div>
 			</main>
 		</div>

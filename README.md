@@ -8,3 +8,10 @@ Reading about the Shades of Morton Mini game [here](<https://oldschool.runescape
 - [x] Iterates Dice Rolls _i_ times and stores the results info
 - [x] Sorts, stores and analyzes occurences of each result
 - [x] Displays results of dice roll batch using Recharts and their bargraph API [re](https://recharts.org/en-US/api/BarChart)
+
+  **V2**
+
+- [x] Seperate out concerns to different named files/folders
+- [x] Remove Bar Chart to reusable component
+- [ ] Store multiple sets of Dice roll results
+- [ ] Display history of results
