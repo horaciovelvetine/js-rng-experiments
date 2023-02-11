@@ -1,4 +1,4 @@
-## Hypothesis
+## Summary
 
 Reading about the Shades of Morton Mini game [here](<https://oldschool.runescape.wiki/w/Shades_of_Mort%27ton_(minigame)>) got me to thinking about Random Number Generation and how its used to 'roll' rewards for players, then it occured to me that the amount of RNG in the game means they must compute a whole lot of dice rolls. This React app is built to explore the RNG built in to TS/JS while also getting the chance to explore [Recharts](https://recharts.org/en-US) and ways to visualise data.
 
