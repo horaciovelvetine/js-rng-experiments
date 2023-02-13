@@ -1,8 +1,8 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-import { DATA_STORE } from '../../func/simple-dice-rolls';
+import { DICE_DATA_POINT } from '../../interfaces/dice-data-point';
 
 interface SIMPLE_DICE_COUNT_BAR_CHART_PROPS {
-	dataSet: DATA_STORE;
+	dataSet: DICE_DATA_POINT[];
 }
 
 export function SDCBarChart({ dataSet }: SIMPLE_DICE_COUNT_BAR_CHART_PROPS) {
@@ -12,7 +12,7 @@ export function SDCBarChart({ dataSet }: SIMPLE_DICE_COUNT_BAR_CHART_PROPS) {
 			<YAxis />
 			<Tooltip />
 			<Legend />
-			<Bar dataKey='occurrs' fill='#f8f' />
+			<Bar dataKey='occurs' fill='#f8f' />
 		</BarChart>
 	);
 }
