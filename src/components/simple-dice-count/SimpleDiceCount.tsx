@@ -13,7 +13,6 @@ const DEFAULTS = {
 export function SimpleDiceCount() {
 	const [data, setData] = useState(generateSimpleDiceRollSet(DEFAULTS.rolls, DEFAULTS.minimum, DEFAULTS.maximum));
 	
-
 	console.log(generateMeanPlotData(data));
 
 	return (

@@ -31,10 +31,10 @@ const findMaximum = (data: DICE_DATA_POINT[]) => {
 
 const findQuartile = (data: DICE_DATA_POINT[], loHi: boolean) => {
 	// loHi == true/upper-quartile calc && false/lower-quartile calc
-	const sortedByOccurs = structuredClone(data).sort((a: DICE_DATA_POINT, b: DICE_DATA_POINT) => a.occurs - b.occurs);
+
 	const quartile = Math.round(data.length / 4);
-	console.log(sortedByOccurs)
-	return loHi ? sortedByOccurs[data.length - quartile] : sortedByOccurs[quartile];
+
+	return loHi ? sortedByOccurs(data)[data.length - quartile] : sortedByOccurs(data)[quartile];
 };
 
 const findMean = (data: DICE_DATA_POINT[]) => {
@@ -42,10 +42,15 @@ const findMean = (data: DICE_DATA_POINT[]) => {
 	data.forEach(datPoint => {
 		iterativeSum += datPoint.occurs;
 	});
-
-	const meanOccurences = iterativeSum / data.length;
-
-	return data.filter(datPoint => {
-		return datPoint.occurs == Math.round(meanOccurences);
+	const meanPoint = data.filter(datPoint => {
+		return datPoint.occurs == Math.round(iterativeSum / data.length);
 	});
+
+	console.log(sortedByOccurs(data))
+
+	return meanPoint.length !== 0 ? meanPoint : [sortedByOccurs(data)[Math.round(data.length / 2)]];
+};
+
+const sortedByOccurs = (data: DICE_DATA_POINT[]): DICE_DATA_POINT[] => {
+	return structuredClone(data).sort((a: DICE_DATA_POINT, b: DICE_DATA_POINT) => a.occurs - b.occurs);
 };
