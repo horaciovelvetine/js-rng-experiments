@@ -1,5 +1,5 @@
 import { DICE_DATA_POINT } from '../interfaces/dice-data-point';
-import { randomInt } from './math-module';
+import { randomInt } from './random-integer';
 
 export function generateSimpleDiceRollSet(iterations: number, min: number, max: number) {
 	const results = rollDice(iterations, min, max);
@@ -36,3 +36,5 @@ function sortDataStore(arr: DICE_DATA_POINT[]) {
 	// sort a data store by an integer value
 	return arr.sort((a, b) => a.int - b.int);
 }
+
+

@@ -1,7 +1,7 @@
 import { Bar, ComposedChart, Legend, Line, Scatter, XAxis, YAxis } from 'recharts';
 import { DICE_DATA_POINT } from '../../interfaces/dice-data-point';
 
-interface SDC_MEAN_CHART_PROPS {
+export interface SDC_MEAN_CHART_PROPS {
 	minimum: DICE_DATA_POINT;
 	lowerQuartile: DICE_DATA_POINT;
 	mean: DICE_DATA_POINT;
