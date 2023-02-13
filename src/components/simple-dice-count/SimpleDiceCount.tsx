@@ -5,14 +5,14 @@ import { SDCInputs } from './Inputs';
 import { generateMeanPlotData } from '../../func/mean-plot';
 
 const DEFAULTS = {
-	rolls: 1000,
+	rolls: 100,
 	minimum: 1,
-	maximum: 100,
+	maximum: 10,
 };
 
 export function SimpleDiceCount() {
 	const [data, setData] = useState(generateSimpleDiceRollSet(DEFAULTS.rolls, DEFAULTS.minimum, DEFAULTS.maximum));
-	console.log(data);
+	
 
 	console.log(generateMeanPlotData(data));
 
