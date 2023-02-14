@@ -24,7 +24,9 @@ export function SDCInputs({ rollsToSimulate = '100', resultFloor = '0', resultCi
 			<div>
 				<label>Rolls to Simulate:</label>
 				<input
-					type='number'
+					type='text'
+					inputMode='numeric'
+					pattern='[0-9]+'
 					id='rolls-to-simulate'
 					name='rolls-to-simulate'
 					value={simulateRollsInput}
