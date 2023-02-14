@@ -6,11 +6,12 @@ type DICE_POINTS = DICE_DATA_POINT | DICE_DATA_POINT[];
 export function generateMeanPlotData(dataSet: DICE_DATA_POINT[]): SDC_MEAN_CHART_PROPS {
 	const minimum: DICE_POINTS = findMinimum(dataSet);
 	const lowerQuartile: DICE_POINTS = findQuartile(dataSet, false);
-	const mean: DICE_POINTS = findMean(dataSet);
+	const meanNearest: DICE_POINTS = findMeanNearest(dataSet);
 	const upperQuartile: DICE_POINTS = findQuartile(dataSet, true);
 	const maximum: DICE_POINTS = findMaximum(dataSet);
+	const meanActual = sumOfOccurs(dataSet) / dataSet.length;
 
-	return { minimum, lowerQuartile, mean, upperQuartile, maximum };
+	return { minimum, lowerQuartile, meanNearest, upperQuartile, maximum, meanActual };
 }
 
 const findMinimum = (data: DICE_DATA_POINT[]) => {
@@ -37,20 +38,26 @@ const findQuartile = (data: DICE_DATA_POINT[], loHi: boolean) => {
 	return loHi ? sortedByOccurs(data)[data.length - quartile] : sortedByOccurs(data)[quartile];
 };
 
-const findMean = (data: DICE_DATA_POINT[]) => {
-	let iterativeSum = 0;
-	data.forEach(datPoint => {
-		iterativeSum += datPoint.occurs;
-	});
+const findMeanNearest = (data: DICE_DATA_POINT[]) => {
+	// returns all matching dataPoints that share meanValue, or finds the 'middle' of the data set to return that point
+	//* I think this may be garbage info... may remove later
 	const meanPoint = data.filter(datPoint => {
-		return datPoint.occurs == Math.round(iterativeSum / data.length);
+		return datPoint.occurs == Math.round(sumOfOccurs(data) / data.length);
 	});
-
-	console.log(sortedByOccurs(data))
 
 	return meanPoint.length !== 0 ? meanPoint : [sortedByOccurs(data)[Math.round(data.length / 2)]];
 };
 
 const sortedByOccurs = (data: DICE_DATA_POINT[]): DICE_DATA_POINT[] => {
+	//clones data and returns that copy sorted by the occurs attribute
 	return structuredClone(data).sort((a: DICE_DATA_POINT, b: DICE_DATA_POINT) => a.occurs - b.occurs);
+};
+
+const sumOfOccurs = (data: DICE_DATA_POINT[]) => {
+	//find the total sum of the occurs column of each data point for mean calc...
+	let iterativeSum = 0;
+	data.forEach(dataPoint => {
+		iterativeSum += dataPoint.occurs;
+	});
+	return iterativeSum;
 };
