@@ -14,8 +14,10 @@ export interface SDC_MEAN_CHART_PROPS {
 }
 
 export function SDCMeanChart({ lowerQuartile, minimum, meanActual, meanNearest, maximum, upperQuartile }: SDC_MEAN_CHART_PROPS) {
-	const data = {};
-	return <></>;
+	const data = [];
+	return <ComposedChart width={800} height={600} data={data}>
+
+  </ComposedChart>;
 }
 
 /* 

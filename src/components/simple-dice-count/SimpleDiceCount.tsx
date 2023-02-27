@@ -8,7 +8,7 @@ import { SDCMeanChart } from './MeanChart';
 const DEFAULTS = {
 	rolls: 100,
 	minimum: 1,
-	maximum: 15,
+	maximum: 100,
 };
 
 export function SimpleDiceCount() {
@@ -29,5 +29,3 @@ export function SimpleDiceCount() {
 		</>
 	);
 }
-
-// a function which filters an array of objects and returns all of the objects with the smallest value for a specificied key value pair
